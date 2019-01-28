@@ -514,7 +514,7 @@ HTTP (S) proxy supports superior load balance, and multiple -P parameters can be
 `proxy http --lb-hashtarget --lb-method=leasttime -T tcp -P 1.1.1.1:33080 -P 2.1.1.1:33080 -P 3.1.1.1:33080 -t tcp -p :33080`
 
 ### **1.15 Speed limit**  
-The speed limit is 100K, which can be specified through the `-l` parameter, for example: 100K 1.5M. 0 means unlimited.   
+The speed limit is 100K, which can be specified through the `-l` parameter, for example: 100K 2000K 1M . 0 means unlimited.   
 `proxy http -t tcp -p 2.2.2.2:33080 -l 100K`
 
 ### **1.16 Designated exporting IP**  
@@ -956,7 +956,7 @@ SOCKS proxy supports the load balancing of superior authorities, and the -P para
 `proxy socks --lb-hashtarget --lb-method=leasttime -T tcp -P 1.1.1.1:33080 -P 2.1.1.1:33080 -P 3.1.1.1:33080 -p :33080 -t tcp`
 
 #### **5.13 Speed limit**  
-The speed limit is 100K, which can be specified through the -l parameter, for example: 100K 1.5M. 0 means unlimited.   
+The speed limit is 100K, which can be specified through the -l parameter, for example: 100K  2000K 1M . 0 means unlimited.   
 `proxy socks -t tcp -p 2.2.2.2:33080 -l 100K`
 
 #### **5.14 Designated exporting IP**  
@@ -1157,7 +1157,7 @@ Suppose there has a SOCKS5 parent proxy:
 `proxy socks -p 2.2.2.2:33080 -z password -t tcp`   
 SPS lower speed limit 100K    
 `proxy sps -S socks -P 2.2.2.2:33080 -T tcp -Z password -l 100K -t tcp -p :33080`   
-It can be specified through the `-l` parameter, for example: 100K 1.5M. 0 means unlimited.    
+It can be specified through the `-l` parameter, for example: 100K  2000K 1M . 0 means unlimited.    
 
 #### **6.12 Designated exporting IP**  
 The `- bind-listen` parameter opens the client's ability to access the target site with an entry IP connection, using the entry IP as the exporting IP. If the entry IP is the intranet IP, the exporting IP will not use the entry IP.   
