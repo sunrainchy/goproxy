@@ -12,17 +12,17 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/snail007/goproxy/core/lib/kcpcfg"
-	encryptconn "github.com/snail007/goproxy/core/lib/transport/encrypt"
-	"github.com/snail007/goproxy/services"
-	httpx "github.com/snail007/goproxy/services/http"
-	keygenx "github.com/snail007/goproxy/services/keygen"
-	mux "github.com/snail007/goproxy/services/mux"
-	socksx "github.com/snail007/goproxy/services/socks"
-	spsx "github.com/snail007/goproxy/services/sps"
-	tcpx "github.com/snail007/goproxy/services/tcp"
-	tunnelx "github.com/snail007/goproxy/services/tunnel"
-	udpx "github.com/snail007/goproxy/services/udp"
+	"github.com/sunrainchy/goproxy/core/lib/kcpcfg"
+	encryptconn "github.com/sunrainchy/goproxy/core/lib/transport/encrypt"
+	"github.com/sunrainchy/goproxy/services"
+	httpx "github.com/sunrainchy/goproxy/services/http"
+	keygenx "github.com/sunrainchy/goproxy/services/keygen"
+	mux "github.com/sunrainchy/goproxy/services/mux"
+	socksx "github.com/sunrainchy/goproxy/services/socks"
+	spsx "github.com/sunrainchy/goproxy/services/sps"
+	tcpx "github.com/sunrainchy/goproxy/services/tcp"
+	tunnelx "github.com/sunrainchy/goproxy/services/tunnel"
+	udpx "github.com/sunrainchy/goproxy/services/udp"
 
 	kcp "github.com/xtaci/kcp-go"
 	"golang.org/x/crypto/pbkdf2"
@@ -186,9 +186,9 @@ func StartWithLog(serviceID, serviceArgsStr string, loggerCallback LogCallback) 
 	muxServerArgs.SessionCount = muxServer.Flag("session-count", "session count which connect to bridge").Short('n').Default("10").Int()
 	muxServerArgs.Jumper = muxServer.Flag("jumper", "https or socks5 proxies used when connecting to parent, only worked of -T is tls or tcp, format is https://username:password@host:port https://host:port or socks5://username:password@host:port socks5://host:port").Short('J').Default("").String()
 	muxServerArgs.TCPSMethod = muxServer.Flag("tcps-method", "method of parent tcps's encrpyt/decrypt, these below are supported :\n"+strings.Join(encryptconn.GetCipherMethods(), ",")).Default("aes-192-cfb").String()
-	muxServerArgs.TCPSPassword = muxServer.Flag("tcps-password", "password of parent tcps's encrpyt/decrypt").Default("snail007's_goproxy").String()
+	muxServerArgs.TCPSPassword = muxServer.Flag("tcps-password", "password of parent tcps's encrpyt/decrypt").Default("sunrainchy's_goproxy").String()
 	muxServerArgs.TOUMethod = muxServer.Flag("tou-method", "method of parent tou's encrpyt/decrypt, these below are supported :\n"+strings.Join(encryptconn.GetCipherMethods(), ",")).Default("aes-192-cfb").String()
-	muxServerArgs.TOUPassword = muxServer.Flag("tou-password", "password of parent tou's encrpyt/decrypt").Default("snail007's_goproxy").String()
+	muxServerArgs.TOUPassword = muxServer.Flag("tou-password", "password of parent tou's encrpyt/decrypt").Default("sunrainchy's_goproxy").String()
 
 	//########mux-client#########
 	muxClient := app.Command("client", "proxy on mux client mode")
@@ -202,9 +202,9 @@ func StartWithLog(serviceID, serviceArgsStr string, loggerCallback LogCallback) 
 	muxClientArgs.SessionCount = muxClient.Flag("session-count", "session count which connect to bridge").Short('n').Default("10").Int()
 	muxClientArgs.Jumper = muxClient.Flag("jumper", "https or socks5 proxies used when connecting to parent, only worked of -T is tls or tcp, format is https://username:password@host:port https://host:port or socks5://username:password@host:port socks5://host:port").Short('J').Default("").String()
 	muxClientArgs.TCPSMethod = muxClient.Flag("tcps-method", "method of parent tcps's encrpyt/decrypt, these below are supported :\n"+strings.Join(encryptconn.GetCipherMethods(), ",")).Default("aes-192-cfb").String()
-	muxClientArgs.TCPSPassword = muxClient.Flag("tcps-password", "password of parent tcps's encrpyt/decrypt").Default("snail007's_goproxy").String()
+	muxClientArgs.TCPSPassword = muxClient.Flag("tcps-password", "password of parent tcps's encrpyt/decrypt").Default("sunrainchy's_goproxy").String()
 	muxClientArgs.TOUMethod = muxClient.Flag("tou-method", "method of parent tou's encrpyt/decrypt, these below are supported :\n"+strings.Join(encryptconn.GetCipherMethods(), ",")).Default("aes-192-cfb").String()
-	muxClientArgs.TOUPassword = muxClient.Flag("tou-password", "password of parent tou's encrpyt/decrypt").Default("snail007's_goproxy").String()
+	muxClientArgs.TOUPassword = muxClient.Flag("tou-password", "password of parent tou's encrpyt/decrypt").Default("sunrainchy's_goproxy").String()
 
 	//########mux-bridge#########
 	muxBridge := app.Command("bridge", "proxy on mux bridge mode")
@@ -214,9 +214,9 @@ func StartWithLog(serviceID, serviceArgsStr string, loggerCallback LogCallback) 
 	muxBridgeArgs.Local = muxBridge.Flag("local", "local ip:port to listen").Short('p').Default(":33080").String()
 	muxBridgeArgs.LocalType = muxBridge.Flag("local-type", "local protocol type <tls|tcp|tcps|kcp|tou>").Default("tls").Short('t').Enum("tls", "tcp", "tcps", "kcp", "tou")
 	muxBridgeArgs.TCPSMethod = muxBridge.Flag("tcps-method", "method of local tcps's encrpyt/decrypt, these below are supported :\n"+strings.Join(encryptconn.GetCipherMethods(), ",")).Default("aes-192-cfb").String()
-	muxBridgeArgs.TCPSPassword = muxBridge.Flag("tcps-password", "password of local tcps's encrpyt/decrypt").Default("snail007's_goproxy").String()
+	muxBridgeArgs.TCPSPassword = muxBridge.Flag("tcps-password", "password of local tcps's encrpyt/decrypt").Default("sunrainchy's_goproxy").String()
 	muxBridgeArgs.TOUMethod = muxBridge.Flag("tou-method", "method of local tou's encrpyt/decrypt, these below are supported :\n"+strings.Join(encryptconn.GetCipherMethods(), ",")).Default("aes-192-cfb").String()
-	muxBridgeArgs.TOUPassword = muxBridge.Flag("tou-password", "password of local tou's encrpyt/decrypt").Default("snail007's_goproxy").String()
+	muxBridgeArgs.TOUPassword = muxBridge.Flag("tou-password", "password of local tou's encrpyt/decrypt").Default("sunrainchy's_goproxy").String()
 
 	//########tunnel-server#########
 	tunnelServer := app.Command("tserver", "proxy on tunnel server mode")
@@ -377,7 +377,7 @@ func StartWithLog(serviceID, serviceArgsStr string, loggerCallback LogCallback) 
 	case "fast3":
 		*kcpArgs.NoDelay, *kcpArgs.Interval, *kcpArgs.Resend, *kcpArgs.NoCongestion = 1, 10, 2, 1
 	}
-	pass := pbkdf2.Key([]byte(*kcpArgs.Key), []byte("snail007-goproxy"), 4096, 32, sha1.New)
+	pass := pbkdf2.Key([]byte(*kcpArgs.Key), []byte("sunrainchy-goproxy"), 4096, 32, sha1.New)
 
 	switch *kcpArgs.Crypt {
 	case "sm4":

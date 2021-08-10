@@ -1,17 +1,17 @@
-<img src="https://github.com/snail007/goproxy/blob/master/docs/images/logo.jpg?raw=true" width="200"/>  
+<img src="https://github.com/sunrainchy/goproxy/blob/master/docs/images/logo.jpg?raw=true" width="200"/>  
 Proxy是golang实现的高性能http,https,websocket,tcp,udp,socks5,ss代理服务器,支持正向代理、反向代理、透明代理、内网穿透、TCP/UDP端口映射、SSH中转、TLS加密传输、协议转换、防污染DNS代理。
 
-[点击下载](https://github.com/snail007/goproxy/releases) 官方QQ交流群: 793015219 (2群), 189618940 (1群满)  
+[点击下载](https://github.com/sunrainchy/goproxy/releases) 官方QQ交流群: 793015219 (2群), 189618940 (1群满)  
 
 ---  
   
-[![stable](https://img.shields.io/badge/stable-stable-green.svg)](https://github.com/snail007/goproxy/) [![license](https://img.shields.io/github/license/snail007/goproxy.svg?style=plastic)]() [![download_count](https://img.shields.io/github/downloads/snail007/goproxy/total.svg?style=plastic)](https://github.com/snail007/goproxy/releases) [![download](https://img.shields.io/github/release/snail007/goproxy.svg?style=plastic)](https://github.com/snail007/goproxy/releases)  
+[![stable](https://img.shields.io/badge/stable-stable-green.svg)](https://github.com/sunrainchy/goproxy/) [![license](https://img.shields.io/github/license/sunrainchy/goproxy.svg?style=plastic)]() [![download_count](https://img.shields.io/github/downloads/sunrainchy/goproxy/total.svg?style=plastic)](https://github.com/sunrainchy/goproxy/releases) [![download](https://img.shields.io/github/release/sunrainchy/goproxy.svg?style=plastic)](https://github.com/sunrainchy/goproxy/releases)  
   
 **[English Manual](/README.md)**  
 
 **[全平台图形界面版本](/gui/README_ZH.md)**  
 
-**[全平台SDK](https://github.com/snail007/goproxy-sdk/blob/master/README_ZH.md)**
+**[全平台SDK](https://github.com/sunrainchy/goproxy-sdk/blob/master/README_ZH.md)**
 
 **[GoProxy特殊授权](/AUTHORIZATION_ZH.md)**
 
@@ -175,7 +175,7 @@ Proxy是golang实现的高性能http,https,websocket,tcp,udp,socks5,ss代理服�
 #### **0.如果你的VPS是linux64位的系统,那么只需要执行下面一句,就可以完成自动安装和配置.**  
 
 ```shell  
-curl -L https://raw.githubusercontent.com/snail007/goproxy/master/install_auto.sh | bash  
+curl -L https://raw.githubusercontent.com/sunrainchy/goproxy/master/install_auto.sh | bash  
 ```  
 
 安装完成,配置目录是/etc/proxy,更详细的使用方法请参考上面的手册目录,进一步了解你想要使用的功能.  
@@ -184,26 +184,26 @@ curl -L https://raw.githubusercontent.com/snail007/goproxy/master/install_auto.s
 #### 手动安装  
 
 #### **1.下载proxy**  
-下载地址:https://github.com/snail007/goproxy/releases/latest   
+下载地址:https://github.com/sunrainchy/goproxy/releases/latest   
 下面以v6.2为例,如果有最新版,请使用最新版链接.   
 
 ```shell  
 cd /root/proxy/  
-wget https://github.com/snail007/goproxy/releases/download/v6.2/proxy-linux-amd64.tar.gz  
+wget https://github.com/sunrainchy/goproxy/releases/download/v6.2/proxy-linux-amd64.tar.gz  
 ```  
 
 #### **2.下载自动安装脚本**  
 
 ```shell  
 cd /root/proxy/  
-wget https://raw.githubusercontent.com/snail007/goproxy/master/install.sh  
+wget https://raw.githubusercontent.com/sunrainchy/goproxy/master/install.sh  
 chmod +x install.sh  
 ./install.sh  
 ```  
 
 #### Docker安装 
 
-[docker](https://hub.docker.com/r/snail007/goproxy)  
+[docker](https://hub.docker.com/r/sunrainchy/goproxy)  
 
 项目根目录的Dockerfile文件用来构建,使用golang 1.10.3,构建基于goproxy的master分支最新版本,  
 全部大小17.3MB,默认情况下使用master分支,不过可以通过修改配置文件Dockerfile  
@@ -220,14 +220,14 @@ sudo docker build .
 ```
 2. 镜像打标签:
 ```
-sudo docker tag <上一步的结果ID> snail007/goproxy:latest
+sudo docker tag <上一步的结果ID> sunrainchy/goproxy:latest
 ```
 3. 运行 
 参数OPTS的值就是传递给proxy的所有参数
 比如下面的例子启动了一个http服务:
 
 ```
-sudo docker run -d --restart=always --name goproxy -e OPTS="http -p :33080" -p 33080:33080 snail007/goproxy:latest
+sudo docker run -d --restart=always --name goproxy -e OPTS="http -p :33080" -p 33080:33080 sunrainchy/goproxy:latest
 ```
 4. 查看日志:
 ```
@@ -1375,9 +1375,9 @@ fast3：`--nodelay=1 --interval=10 --resend=2 --nc=1`
 
 ### 如何使用源码?   
 建议go1.10.1.       
-`go get github.com/snail007/goproxy`   
+`go get github.com/sunrainchy/goproxy`   
 cd进入你的go src目录  
-cd进入`github.com/snail007/goproxy`即可.    
+cd进入`github.com/sunrainchy/goproxy`即可.    
 编译直接:`go build -o proxy`        
 运行: `go run *.go`       
 utils是工具包,service是具体的每个服务类. 
@@ -1390,5 +1390,5 @@ Proxy is licensed under GPLv3 license.
   
 ### Donation  
 如果proxy帮助你解决了很多问题,你可以通过下面的捐赠更好的支持proxy.  
-<img src="https://github.com/snail007/goproxy/blob/master/docs/images/alipay.jpg?raw=true" width="200"/>  
-<img src="https://github.com/snail007/goproxy/blob/master/docs/images/wxpay.jpg?raw=true" width="200"/>  
+<img src="https://github.com/sunrainchy/goproxy/blob/master/docs/images/alipay.jpg?raw=true" width="200"/>  
+<img src="https://github.com/sunrainchy/goproxy/blob/master/docs/images/wxpay.jpg?raw=true" width="200"/>  
